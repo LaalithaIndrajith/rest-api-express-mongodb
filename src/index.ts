@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
+import router from "./router";
 
 const app = express();
 
@@ -20,8 +21,8 @@ app.use(bodyParser.json());
 
 const server = http.createServer(app);
 
-server.listen(8081, () => {
-    console.log("Server running on http://localhost:8081/");
+server.listen(8080, () => {
+    console.log("Server running on http://localhost:8080/");
 });
 
 const MONGODB_URL = "mongodb+srv://laalithagajanayake:cG3brg68Sw4e7Rfr@clusterone.fhnoh.mongodb.net/?retryWrites=true&w=majority&appName=ClusterOne"
@@ -29,3 +30,5 @@ const MONGODB_URL = "mongodb+srv://laalithagajanayake:cG3brg68Sw4e7Rfr@clusteron
 mongoose.Promise = Promise;
 mongoose.connect(MONGODB_URL);
 mongoose.connection.on("error", (error: Error) => console.log(error));
+
+app.use("/", router());

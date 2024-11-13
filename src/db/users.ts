@@ -14,7 +14,7 @@ export const UserModel = mongoose.model('User', UserSchema);
 
 
 export const getUsers = () => UserModel.find();
-export const getUsersByEmail = (email: string) => UserModel.findOne({ email });
+export const getUserByEmail = (email: string) => UserModel.findOne({ email });
 // To check whether the user logged in or not
 export const getUserBySessionToken = (sessionToken: string) => UserModel.findOne({
     'authentication.sessionToken' : sessionToken });
